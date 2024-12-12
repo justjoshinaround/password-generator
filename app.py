@@ -4,7 +4,10 @@ from nltk.corpus import words
 import nltk
 
 # Download word list if not already present
-nltk.download('words')
+try:
+    nltk.data.find('corpora/words.zip')  # Check if the word list is already downloaded
+except LookupError:
+    nltk.download('words')  # Download it if not present
 
 # Load dictionary of words with 4-6 letters
 def load_dictionary():
