@@ -17,7 +17,7 @@ def load_dictionary():
 
 def generate_password(word_list):
     """
-    Generate a password in the format: FirstWord5-6letters+Number+SecondWord4-5letters+Symbol
+    Generate a password in the format: FirstWord5-6letters+Number+SecondWord4-5letters+Symbol+Number2
     """
     if len(word_list) < 2:
         raise ValueError("Not enough words in the dictionary to generate a password.")
