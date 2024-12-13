@@ -26,12 +26,13 @@ def generate_password(word_list):
     first_word = random.choice([word for word in word_list if 5 <= len(word) <= 7]).capitalize()
     second_word = random.choice([word for word in word_list if 4 <= len(word) <= 6]).capitalize()
 
-    # Generate number and symbol
+    # Generate numbers and symbol
     number = str(random.randint(0, 9))
+    number2 = str(random.randint(0, 9))
     symbol = random.choice(['?', '!', '@', '#', '$', '&'])
 
     # Combine to form the password
-    password = f"{first_word}{number}{second_word}{symbol}"
+    password = f"{first_word}{number}{second_word}{symbol}{number2}"
     return password
 
 # Streamlit interface
