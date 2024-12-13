@@ -1,48 +1,64 @@
-import streamlit as st
-import random
-from nltk.corpus import words
-import nltk
+Password Generator App::
 
-# Download word list if not already present
-nltk.download('words')
+This is a simple password generator built using Streamlit. The app generates secure passwords by combining random words, numbers, and symbols.
 
-# Load dictionary of words with 4-6 letters
-def load_dictionary():
-    """
-    Load a dictionary of words using NLTK's word corpus.
-    Filters for words with 4-6 characters.
-    """
-    return [word for word in words.words() if 4 <= len(word) <= 6]
+Features::
 
-def generate_password(word_list):
-    """
-    Generate a password in the format: FirstWord5-6letters+Number+SecondWord4-5letters+Symbol
-    """
-    if len(word_list) < 2:
-        raise ValueError("Not enough words in the dictionary to generate a password.")
+    Generates passwords in the format:
+    Word1 + Random Number + Word2 + Symbol + Random Number2
+    Example: Apple5Chair@7
+    Words are selected from a preloaded dictionary of school-appropriate words with lengths between 4 and 6 characters.
+    User-friendly interface powered by Streamlit.
 
-    # Select words
-    first_word = random.choice([word for word in word_list if 5 <= len(word) <= 6]).capitalize()
-    second_word = random.choice([word for word in word_list if 4 <= len(word) <= 5]).capitalize()
+How to Use::
 
-    # Generate number and symbol
-    number = str(random.randint(0, 9))
-    symbol = random.choice(['?', '!', '@', '#', '$', '&'])
+    Open the live app URL password-generator-ja.streamlit.app/
+    Click the "Generate Password" button.
+    Copy the displayed password for your use.
 
-    # Combine to form the password
-    password = f"{first_word}{number}{second_word}{symbol}"
-    return password
+Requirements::
 
-# Streamlit interface
-st.title("Password Generator")
-st.write("Click below to generate a password:")
+To run the app locally, ensure the following are installed:
 
-if st.button("Generate Password"):
-    word_list = load_dictionary()
+    Python 3.8+
+    Required Python packages:
 
-    if word_list:
-        password = generate_password(word_list)
-        # Display the password in Markdown format
-        st.markdown(f"**Generated Password:** `{password}`")
-    else:
-        st.error("Failed to load dictionary or insufficient words.")
+    streamlit
+
+Installation::
+
+Follow these steps to run the app locally:
+
+    Clone the repository:
+
+git clone https://github.com/justjoshinaround/password-generator.git
+cd your-repo
+
+Create and activate a virtual environment:
+
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+Install the dependencies:
+
+pip install -r requirements.txt
+
+Preload the word corpus to avoid runtime errors:
+
+python -c "import nltk; nltk.download('words', download_dir='./nltk_data')"
+
+Run the Streamlit app:
+
+    streamlit run streamlit_app.py
+
+    Open the app in your browser at http://localhost:8501.
+
+Deployment::
+
+This app can be deployed on Streamlit Cloud. Ensure:
+
+    The nltk_data folder is included in the repository for deployment.
+    The streamlit_app.py file is the entry point.
+
+
+Contributions are welcome! Feel free to submit issues or pull requests.
