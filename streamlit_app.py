@@ -55,8 +55,15 @@ st.markdown("""
     <style>
     .title {
         text-align: center;
-        font-size: 40px;
-        color: black;
+        font-size: 50px;
+        font-weight: bold;
+        color: #ff6347;
+        background: linear-gradient(90deg, rgba(255, 99, 71, 1) 0%, rgba(255, 215, 0, 1) 100%);
+        -webkit-background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.4), 0 0 5px rgba(255, 99, 71, 1); /* Reduced shadow size */
+        font-family: 'Arial', sans-serif;
+        animation: glow 30s ease-in-out infinite; /* Slower animation */
     }
     .counter {
         position: fixed;
@@ -79,12 +86,25 @@ st.markdown("""
     }
     .shiny-button:hover {
         background-color: #FFD700;
-        box-shadow: 0 0 20px #FFD700;
+        box-shadow: 0 0 15px #FFD700; /* Reduced glow effect */
+    }
+    @keyframes glow {
+        0% { text-shadow: 0 0 5px #ff6347, 0 0 10px #ff6347, 0 0 15px #ff6347, 0 0 20px #ff6347; }
+        10% { text-shadow: 0 0 3px #ff7f50, 0 0 6px #ff7f50, 0 0 9px #ff7f50, 0 0 12px #ff7f50; }
+        20% { text-shadow: 0 0 3px #ff4500, 0 0 6px #ff4500, 0 0 9px #ff4500, 0 0 12px #ff4500; }
+        30% { text-shadow: 0 0 3px #32cd32, 0 0 6px #32cd32, 0 0 9px #32cd32, 0 0 12px #32cd32; }
+        40% { text-shadow: 0 0 3px #00bfff, 0 0 6px #00bfff, 0 0 9px #00bfff, 0 0 12px #00bfff; }
+        50% { text-shadow: 0 0 3px #8a2be2, 0 0 6px #8a2be2, 0 0 9px #8a2be2, 0 0 12px #8a2be2; }
+        60% { text-shadow: 0 0 3px #ff1493, 0 0 6px #ff1493, 0 0 9px #ff1493, 0 0 12px #ff1493; }
+        70% { text-shadow: 0 0 3px #ff69b4, 0 0 6px #ff69b4, 0 0 9px #ff69b4, 0 0 12px #ff69b4; }
+        80% { text-shadow: 0 0 3px #adff2f, 0 0 6px #adff2f, 0 0 9px #adff2f, 0 0 12px #adff2f; }
+        90% { text-shadow: 0 0 3px #ff6347, 0 0 6px #ff6347, 0 0 9px #ff6347, 0 0 12px #ff6347; }
+        100% { text-shadow: 0 0 3px #FFD700, 0 0 6px #FFD700, 0 0 9px #FFD700, 0 0 12px #FFD700; }
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Centered title
+# Centered title with gradient and glowing effect
 st.markdown('<h1 class="title">Password Generator</h1>', unsafe_allow_html=True)
 
 # Display usage count in the bottom right
